@@ -57,3 +57,15 @@ export const getCurrentMonth = (weekDates) => {
         'MMM YYYY'
       )}`;
 };
+
+export const getEventsDay = (events, monthDay, dayEnd) => {
+  if (!events) {
+    return null;
+  }
+
+  return events.map((event) => ({
+    ...event,
+    dateFrom: new Date(event.dateFrom),
+    dateTo: new Date(event.dateTo),
+  }));
+};
