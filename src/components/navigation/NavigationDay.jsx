@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { days } from '../../utils/dateUtils.js';
 
 const NavigationDay = ({ dayDate }) => {
@@ -9,5 +10,4 @@ const NavigationDay = ({ dayDate }) => {
     </div>
   );
 };
-
 export default NavigationDay;
