@@ -9,11 +9,15 @@ const Header = ({
   handlePresentWeek,
   weekDates,
   toggleModal,
+  setEventData,
 }) => {
   return (
     <header className="header">
       <button
-        onClick={() => toggleModal(true)}
+        onClick={() => {
+          toggleModal(true);
+          setEventData({ time: new Date() });
+        }}
         className="button create-event-btn"
       >
         Create

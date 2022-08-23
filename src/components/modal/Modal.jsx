@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './modal.scss';
 
-const Modal = ({ handleChange, toggleModal }) => {
+const Modal = ({
+  handleChange,
+  toggleModal,
+  handleSetEventData,
+  eventDataObj,
+}) => {
+  const [eventData, setEventData] = useState({ ...eventDataObj });
   return (
     <div className="modal overlay">
       <div className="modal__content">
