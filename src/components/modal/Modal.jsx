@@ -2,12 +2,17 @@ import React from 'react';
 
 import './modal.scss';
 
-const Modal = ({ handleChange }) => {
+const Modal = ({ handleChange, toggleModal }) => {
   return (
     <div className="modal overlay">
       <div className="modal__content">
         <div className="create-event">
-          <button className="create-event__close-btn">+</button>
+          <button
+            onClick={() => toggleModal(false)}
+            className="create-event__close-btn"
+          >
+            +
+          </button>
           <form className="event-form">
             <input
               type="text"

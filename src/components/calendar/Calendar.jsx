@@ -9,6 +9,7 @@ import './calendar.scss';
 
 const Calendar = ({ weekDates }) => {
   const [event, setEvent] = useState(events);
+  console.log(event);
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />

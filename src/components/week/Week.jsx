@@ -4,17 +4,28 @@ import Day from '../day/Day';
 import './week.scss';
 
 const Week = ({ weekDates, events }) => {
+  const getEventsDay = (events, dayStart, dayEnd) => {
+    if (!events) {
+      return null;
+    }
+    return events
+      .map((event) => ({
+        ...event,
+        dateFrom: new Date(event.dateFrom),
+        dateTo: new Date(event.dateTo),
+      }))
+      .filter((event) => event.dateFrom >= dayStart && event.dateTo < dayEnd);
+  };
   return (
     <div className="calendar__week">
-      {weekDates.map((dayStart) => {
+      {weekDates.map((dayStart, index) => {
         const dayEnd = new Date(dayStart.getTime()).setHours(
           dayStart.getHours() + 24
         );
 
-        //getting all events from the day we will render
-        const dayEvents = events.filter(
-          (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
-        );
+        const dayEvents = events
+          ? getEventsDay(events, dayStart, dayEnd)
+          : null;
 
         return (
           <Day
