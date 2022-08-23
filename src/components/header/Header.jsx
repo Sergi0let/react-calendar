@@ -1,39 +1,25 @@
 import React from 'react';
 
 import './header.scss';
-import NavigationPanel from './NavigationPanel';
 
-const Header = ({
-  handleNextWeek,
-  handlePrevWeek,
-  handlePresentWeek,
-  weekDates,
-  toggleModal,
-  setEventData,
-}) => {
+const Header = () => {
   return (
     <header className="header">
-      <button
-        onClick={() => {
-          toggleModal(true);
-          setEventData({ time: new Date() });
-        }}
-        className="button create-event-btn"
-      >
-        Create
+      <button className="button create-event-btn">
+        <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
-      <NavigationPanel
-        weekDates={weekDates}
-        handleNextWeek={handleNextWeek}
-        handlePrevWeek={handlePrevWeek}
-        handlePresentWeek={handlePresentWeek}
-        toggleModal={toggleModal}
-      />
+      <div className="navigation">
+        <button className="navigation__today-btn button">Today</button>
+        <button className="icon-button navigation__nav-icon">
+          <i className="fas fa-chevron-left"></i>
+        </button>
+        <button className="icon-button navigation__nav-icon">
+          <i className="fas fa-chevron-right"></i>
+        </button>
+        <span className="navigation__displayed-month"></span>
+      </div>
     </header>
   );
 };
 
 export default Header;
-{
-  /* <i className="fas fa-plus create-event-btn__icon"></i>; */
-}
