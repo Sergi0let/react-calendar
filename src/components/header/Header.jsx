@@ -8,11 +8,19 @@ const Header = ({
   clickCurrentWeek,
   clickNextWeek,
   clickPrevWeek,
+  openModal,
+  onEventData,
 }) => {
   return (
     <header className="header">
-      <button className="button create-event-btn">
-        <i className="fas fa-plus create-event-btn__icon"></i>Create
+      <button
+        onClick={() => {
+          openModal(true);
+        }}
+        className="button create-event-btn"
+      >
+        <i className="fas fa-plus create-event-btn__icon"></i>
+        Create
       </button>
       <div className="navigation">
         <button

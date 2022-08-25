@@ -1,5 +1,5 @@
 import React from 'react';
-
+import events from '../../gateway/events';
 import './event.scss';
 
 const Event = ({ height, marginTop, title, time }) => {
@@ -9,7 +9,7 @@ const Event = ({ height, marginTop, title, time }) => {
   };
 
   return (
-    <div style={eventStyle} className="event">
+    <div style={eventStyle} className="event delete-event-btn ">
       <div className="event__title">{title}</div>
       <div className="event__time">{time}</div>
     </div>
