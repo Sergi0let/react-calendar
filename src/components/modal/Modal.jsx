@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import events from '../../gateway/events';
+import { formatMins } from '../../utils/dateUtils';
+import moment from 'moment';
 
 import './modal.scss';
 
 const Modal = ({ closeModal }) => {
   const [setTitle, useSetTitle] = useState('Title write!');
-  const [setDate, useSetDate] = useState(null);
-  const [setStartTime, useSetStartTime] = useState(null);
-  const [setEndTime, useSetEndTime] = useState(null);
+  const [setDate, useSetDate] = useState(
+    moment(new Date()).format('YYYY-MM-DD')
+  );
+  const [setStartTime, useSetStartTime] = useState(
+    moment(new Date()).format('HH:MM')
+  );
+  const [setEndTime, useSetEndTime] = useState(
+    moment(new Date()).format('HH:MM')
+  );
   const [setDescription, useSetDescription] = useState('Write you task');
-
+  console.log(setEndTime);
   const handleChange = (e) => {
     useSetTitle(e.target.value);
   };
@@ -32,14 +40,14 @@ const Modal = ({ closeModal }) => {
 
   const getDateTime = (date, time) => {
     const [hours, minutes] = time.split(':');
-    const currentHours = new Date(new Date(date).setHours(+hours));
-    const currentMinutes = new Date(
-      new Date(currentHours).setMinutes(+minutes)
-    );
+    const currentHours = new Date(new Date(date).setHours(hours));
+    const currentMinutes = new Date(new Date(currentHours).setMinutes(minutes));
     return currentMinutes;
   };
 
-  const onCreate = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     const eventData = {
       id: Math.floor(Math.random() * 1000),
       title: setTitle,
@@ -47,13 +55,9 @@ const Modal = ({ closeModal }) => {
       dateFrom: getDateTime(setDate, setStartTime),
       dateTo: getDateTime(setDate, setEndTime),
     };
-    return eventData;
-  };
+    console.log(eventData);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    events.push(onCreate());
+    events.push(eventData);
     closeModal(false);
   };
 
