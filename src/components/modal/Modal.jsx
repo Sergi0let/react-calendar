@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
+import { getDateTime } from '../../utils/dateUtils';
 
 import './modal.scss';
 
@@ -36,13 +37,6 @@ const Modal = ({ eventsObj, closeModal }) => {
     setDescription(e.target.value);
   };
 
-  const getDateTime = (date, time) => {
-    const [hours, minutes] = time.split(':');
-    const currentHours = new Date(new Date(date).setHours(hours));
-    const currentMinutes = new Date(new Date(currentHours).setMinutes(minutes));
-    return currentMinutes;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -53,6 +47,7 @@ const Modal = ({ eventsObj, closeModal }) => {
       dateFrom: getDateTime(dateData, startTimeData),
       dateTo: getDateTime(dateData, endTimeData),
     };
+
     eventsObj.push(eventData);
 
     closeModal(false);
