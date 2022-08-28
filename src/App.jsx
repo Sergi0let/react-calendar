@@ -45,6 +45,7 @@ const App = () => {
         weekDates={weekDates}
         openModal={toggleModal}
         closeModal={toggleModal}
+        setIsModal={setIsModal}
       />
       {isModal && <Modal eventsObj={eventsObj} closeModal={toggleModal} />}
     </>

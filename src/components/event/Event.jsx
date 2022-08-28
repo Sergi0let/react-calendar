@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import './event.scss';
 
-const Event = ({ height, marginTop, title, time, openModal }) => {
+const Event = ({ height, marginTop, title, time }) => {
   const eventStyle = {
     height,
     marginTop,
   };
 
   return (
-    <div
-      onDoubleClickCapture={() => openModal(true)}
-      style={eventStyle}
-      className="event delete-event-btn "
-    >
+    <div style={eventStyle} className="event delete-event-btn ">
       <div className="event__title">{title}</div>
       <div className="event__time">{time}</div>
     </div>
