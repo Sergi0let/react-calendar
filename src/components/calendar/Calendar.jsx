@@ -7,14 +7,14 @@ import events from '../../gateway/events';
 
 import './calendar.scss';
 
-const Calendar = ({ weekDates }) => {
+const Calendar = ({ weekDates, openModal }) => {
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
       <div className="calendar__body">
         <div className="calendar__week-container">
           <Sidebar />
-          <Week weekDates={weekDates} events={events} />
+          <Week weekDates={weekDates} events={events} openModal={openModal} />
         </div>
       </div>
     </section>

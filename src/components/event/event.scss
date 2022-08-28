@@ -14,23 +14,6 @@
     white-space: nowrap;
     margin-bottom: 8px;
   }
-
-  &:hover {
-    font-weight: bold;
-    background-color: red;
-  }
-  &__block-delete {
-    position: absolute;
-    bottom: -40px;
-    right: -50px;
-    width: 100px;
-    height: 50px;
-    background-color: #eee;
-    border-radius: 8px;
-    border: none;
-    z-index: 5;
-    cursor: pointer;
-  }
 }
 
 .delete-event-btn {

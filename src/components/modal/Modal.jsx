@@ -1,41 +1,39 @@
 import React, { useState } from 'react';
-import events from '../../gateway/events';
-import { formatMins } from '../../utils/dateUtils';
 import moment from 'moment';
 
 import './modal.scss';
 
-const Modal = ({ closeModal }) => {
-  const [setTitle, useSetTitle] = useState('Title write!');
-  const [setDate, useSetDate] = useState(
+const Modal = ({ eventsObj, closeModal }) => {
+  const [titleData, setTitleData] = useState('');
+  const [dateData, setDateData] = useState(
     moment(new Date()).format('YYYY-MM-DD')
   );
-  const [setStartTime, useSetStartTime] = useState(
+  const [startTimeData, setStartData] = useState(
     moment(new Date()).format('HH:MM')
   );
-  const [setEndTime, useSetEndTime] = useState(
+  const [endTimeData, setEndTimeData] = useState(
     moment(new Date()).format('HH:MM')
   );
-  const [setDescription, useSetDescription] = useState('Write you task');
-  console.log(setEndTime);
-  const handleChange = (e) => {
-    useSetTitle(e.target.value);
+  const [descriptionData, setDescription] = useState('');
+
+  const handleChangeTitle = (e) => {
+    setTitleData(e.target.value);
   };
 
   const handleDate = (e) => {
-    useSetDate(e.target.value);
+    setDateData(e.target.value);
   };
 
   const handleStartTime = (e) => {
-    useSetStartTime(e.target.value);
+    setStartData(e.target.value);
   };
 
   const handleEndTime = (e) => {
-    useSetEndTime(e.target.value);
+    setEndTimeData(e.target.value);
   };
 
   const handleSetDescription = (e) => {
-    useSetDescription(e.target.value);
+    setDescription(e.target.value);
   };
 
   const getDateTime = (date, time) => {
@@ -50,14 +48,13 @@ const Modal = ({ closeModal }) => {
 
     const eventData = {
       id: Math.floor(Math.random() * 1000),
-      title: setTitle,
-      description: setDescription,
-      dateFrom: getDateTime(setDate, setStartTime),
-      dateTo: getDateTime(setDate, setEndTime),
+      title: titleData,
+      description: descriptionData,
+      dateFrom: getDateTime(dateData, startTimeData),
+      dateTo: getDateTime(dateData, endTimeData),
     };
-    console.log(eventData);
+    eventsObj.push(eventData);
 
-    events.push(eventData);
     closeModal(false);
   };
 
@@ -75,9 +72,10 @@ const Modal = ({ closeModal }) => {
             <input
               type="text"
               name="title"
-              placeholder={setTitle}
+              placeholder="title"
               className="event-form__field"
-              onChange={handleChange}
+              onChange={handleChangeTitle}
+              value={titleData}
             />
             <div className="event-form__time">
               <input
@@ -85,12 +83,14 @@ const Modal = ({ closeModal }) => {
                 name="date"
                 className="event-form__field"
                 onChange={handleDate}
+                value={dateData}
               />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
                 onChange={handleStartTime}
+                value={startTimeData}
               />
               <span>-</span>
               <input
@@ -98,13 +98,15 @@ const Modal = ({ closeModal }) => {
                 name="endTime"
                 className="event-form__field"
                 onChange={handleEndTime}
+                value={endTimeData}
               />
             </div>
             <textarea
               name="description"
-              placeholder={setDescription}
+              placeholder="description"
               className="event-form__field"
               onChange={handleSetDescription}
+              value={descriptionData}
             ></textarea>
             <button type="submit" className="event-form__submit-btn">
               Create

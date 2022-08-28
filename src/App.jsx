@@ -3,15 +3,16 @@ import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
+import events from './gateway/events.js';
 // import { createTimeData } from './utils/createEventData.js';
-
 import './common.scss';
 
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
   const [isModal, setIsModal] = useState(false);
   const [eventData, setEventData] = useState(null);
-  const [events, setEvents] = useState(null);
+  const [eventsObj, setEventsObj] = useState(events);
+  console.log(eventsObj);
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
@@ -20,21 +21,23 @@ const App = () => {
       new Date(weekStartDate.setDate(weekStartDate.getDate() + 7))
     );
   };
-
   const handlePrevWeek = () => {
     setWeekStartDate(
       new Date(weekStartDate.setDate(weekStartDate.getDate() - 7))
     );
   };
-
   const handleSetCurrent = () => {
     setWeekStartDate(new Date());
   };
-
   const toggleModal = (value) => {
     setIsModal(value);
   };
 
+  // const onCreate = (obj) => {
+  //   const updatedTasks = eventsObj.concat(obj);
+  //   console.log(updatedTasks);
+  //   setEventsObj(updatedTasks);
+  // };
   return (
     <>
       <Header
@@ -44,9 +47,17 @@ const App = () => {
         clickPrevWeek={handlePrevWeek}
         openModal={toggleModal}
       />
-      <Calendar weekDates={weekDates} />
+      <Calendar
+        weekDates={weekDates}
+        openModal={toggleModal}
+        closeModal={toggleModal}
+      />
       {isModal && (
-        <Modal eventData={eventData} closeModal={toggleModal} events={events} />
+        <Modal
+          // onCreate={onCreate}
+          eventsObj={eventsObj}
+          closeModal={toggleModal}
+        />
       )}
     </>
   );
