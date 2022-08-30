@@ -11,9 +11,7 @@ const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
   const [isModal, setIsModal] = useState(false);
   const [eventsObj, setEventsObj] = useState(events);
-  console.log(eventsObj);
-  const [deleteButton, setDeleteButton] = useState(false);
-
+  const [eventId, setEventId] = useState(null);
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
   const handleNextWeek = () => {
@@ -33,22 +31,20 @@ const App = () => {
     setIsModal(value);
   };
 
+  const handlerSetId = (valueId) => {
+    setEventId(valueId);
+  };
+
   const handleCreateEvent = (eventTask) => {
     const updatedEvent = eventsObj.concat(eventTask);
     setEventsObj(updatedEvent);
   };
 
-  // const handleDeleteEvent = (id) => {
-  //   const updatedTask = eventsObj.map((event) => {
-  //     if (event.id === id) {
-  //       return {
-  //         ...event,
-  //       };
-  //     }
-  //     return event;
-  //   });
-  //   setEventsObj(updatedTask);
-  // };
+  const handleDeleteEvent = (eventId) => {
+    const updatedEvent = eventsObj.filter((even) => even.id !== eventId);
+    setEventsObj(updatedEvent);
+    toggleModal(false);
+  };
 
   return (
     <>
@@ -64,6 +60,7 @@ const App = () => {
         openModal={toggleModal}
         closeModal={toggleModal}
         eventsObj={eventsObj}
+        thisId={handlerSetId}
       />
       {isModal && (
         <Modal
@@ -71,6 +68,8 @@ const App = () => {
           closeModal={toggleModal}
           setEventsObj={setEventsObj}
           addTask={handleCreateEvent}
+          deleteTask={handleDeleteEvent}
+          eventId={eventId}
         />
       )}
     </>
