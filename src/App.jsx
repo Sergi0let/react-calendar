@@ -32,6 +32,10 @@ const App = () => {
     setIsModal(value);
   };
 
+  const deleteEvent = (eventsObj) => {
+    eventsObj.filter((el) => console.log(el.id));
+  };
+  deleteEvent(eventsObj);
   return (
     <>
       <Header
@@ -45,7 +49,6 @@ const App = () => {
         weekDates={weekDates}
         openModal={toggleModal}
         closeModal={toggleModal}
-        setIsModal={setIsModal}
       />
       {isModal && <Modal eventsObj={eventsObj} closeModal={toggleModal} />}
     </>
