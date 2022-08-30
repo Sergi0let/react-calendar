@@ -22,6 +22,7 @@ const Week = ({ weekDates, events, openModal }) => {
             key={dayStart.getDate()}
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
+            eventDate={dayStart}
           />
         );
       })}

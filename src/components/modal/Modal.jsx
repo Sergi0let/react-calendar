@@ -50,6 +50,9 @@ const Modal = ({ eventsObj, closeModal }) => {
 
     eventsObj.push(eventData);
 
+    // const newObj = events.concat(eventData);
+    // setEventsObj(newObj);
+
     closeModal(false);
   };
 
@@ -103,9 +106,12 @@ const Modal = ({ eventsObj, closeModal }) => {
               onChange={handleSetDescription}
               value={descriptionData}
             ></textarea>
+
             <button type="submit" className="event-form__submit-btn">
               Create
             </button>
+
+            <button className="event-form__submit-btn">Delete</button>
           </form>
         </div>
       </div>

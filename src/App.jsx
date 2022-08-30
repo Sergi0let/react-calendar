@@ -12,6 +12,7 @@ const App = () => {
   const [isModal, setIsModal] = useState(false);
   const [eventsObj, setEventsObj] = useState(events);
   console.log(eventsObj);
+  const [deleteButton, setDeleteButton] = useState(false);
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
@@ -32,10 +33,18 @@ const App = () => {
     setIsModal(value);
   };
 
-  const deleteEvent = (eventsObj) => {
-    eventsObj.filter((el) => console.log(el.id));
-  };
-  deleteEvent(eventsObj);
+  // const handleDeleteEvent = (id) => {
+  //   const updatedTask = eventsObj.map((event) => {
+  //     if (event.id === id) {
+  //       return {
+  //         ...event,
+  //       };
+  //     }
+  //     return event;
+  //   });
+  //   setEventsObj(updatedTask);
+  // };
+
   return (
     <>
       <Header
