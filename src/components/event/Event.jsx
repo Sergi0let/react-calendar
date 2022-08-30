@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './event.scss';
 
 const Event = ({ height, marginTop, title, time, openModal }) => {

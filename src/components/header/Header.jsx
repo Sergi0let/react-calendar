@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentMonth } from '../../utils/dateUtils';
+import { getPresentMonth } from '../../utils/dateUtils';
 
 import './header.scss';
 
@@ -36,7 +36,7 @@ const Header = ({
           <i onClick={clickNextWeek} className="fas fa-chevron-right"></i>
         </button>
         <span className="navigation__displayed-month">
-          {getCurrentMonth(weekDates)}
+          {getPresentMonth(weekDates)}
         </span>
       </div>
     </header>

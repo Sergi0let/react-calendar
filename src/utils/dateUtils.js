@@ -47,25 +47,12 @@ export const months = [
   'November',
   'December',
 ];
-export const getCurrentMonth = (weekDates) => {
-  const startWeek = weekDates[0];
-  const endWeek = weekDates[weekDates.length - 1];
+export const getPresentMonth = (weekDates) => {
+  const [startWeek, , , , , endWeek] = weekDates;
 
   return startWeek.getMonth() === endWeek.getMonth()
     ? moment(startWeek).format('MMM YYYY')
     : `${moment(startWeek).format('MMM')} - ${moment(endWeek).format(
         'MMM YYYY'
       )}`;
-};
-
-export const getEventsDay = (events, monthDay, dayEnd) => {
-  if (!events) {
-    return null;
-  }
-
-  return events.map((event) => ({
-    ...event,
-    dateFrom: new Date(event.dateFrom),
-    dateTo: new Date(event.dateTo),
-  }));
 };
