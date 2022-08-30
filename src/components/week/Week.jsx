@@ -4,7 +4,7 @@ import Day from '../day/Day';
 
 import './week.scss';
 
-const Week = ({ weekDates, events, openModal }) => {
+const Week = ({ weekDates, eventsObj, openModal }) => {
   return (
     <div className="calendar__week">
       {weekDates.map((dayStart) => {
@@ -12,7 +12,7 @@ const Week = ({ weekDates, events, openModal }) => {
           dayStart.getHours() + 24
         );
 
-        const dayEvents = getEventsDay(events).filter(
+        const dayEvents = getEventsDay(eventsObj).filter(
           (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
         );
 

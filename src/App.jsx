@@ -33,6 +33,11 @@ const App = () => {
     setIsModal(value);
   };
 
+  const handleCreateEvent = (eventTask) => {
+    const updatedEvent = eventsObj.concat(eventTask);
+    setEventsObj(updatedEvent);
+  };
+
   // const handleDeleteEvent = (id) => {
   //   const updatedTask = eventsObj.map((event) => {
   //     if (event.id === id) {
@@ -58,8 +63,16 @@ const App = () => {
         weekDates={weekDates}
         openModal={toggleModal}
         closeModal={toggleModal}
+        eventsObj={eventsObj}
       />
-      {isModal && <Modal eventsObj={eventsObj} closeModal={toggleModal} />}
+      {isModal && (
+        <Modal
+          eventsObj={eventsObj}
+          closeModal={toggleModal}
+          setEventsObj={setEventsObj}
+          addTask={handleCreateEvent}
+        />
+      )}
     </>
   );
 };

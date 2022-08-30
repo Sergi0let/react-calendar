@@ -4,7 +4,7 @@ import { getDateTime } from '../../utils/dateUtils';
 
 import './modal.scss';
 
-const Modal = ({ eventsObj, closeModal }) => {
+const Modal = ({ closeModal, addTask }) => {
   const [titleData, setTitleData] = useState('');
   const [dateData, setDateData] = useState(
     moment(new Date()).format('YYYY-MM-DD')
@@ -48,11 +48,7 @@ const Modal = ({ eventsObj, closeModal }) => {
       dateTo: getDateTime(dateData, endTimeData),
     };
 
-    eventsObj.push(eventData);
-
-    // const newObj = events.concat(eventData);
-    // setEventsObj(newObj);
-
+    addTask(eventData);
     closeModal(false);
   };
 
