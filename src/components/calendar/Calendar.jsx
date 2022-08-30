@@ -6,7 +6,7 @@ import Sidebar from '../sidebar/Sidebar';
 
 import './calendar.scss';
 
-const Calendar = ({ weekDates, openModal, eventsObj }) => {
+const Calendar = ({ weekDates, openModal, eventsObj, thisId }) => {
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
@@ -17,6 +17,7 @@ const Calendar = ({ weekDates, openModal, eventsObj }) => {
             weekDates={weekDates}
             eventsObj={eventsObj}
             openModal={openModal}
+            thisId={thisId}
           />
         </div>
       </div>

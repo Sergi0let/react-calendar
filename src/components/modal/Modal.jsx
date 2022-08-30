@@ -4,7 +4,7 @@ import { getDateTime } from '../../utils/dateUtils';
 
 import './modal.scss';
 
-const Modal = ({ closeModal, addTask }) => {
+const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
   const [titleData, setTitleData] = useState('');
   const [dateData, setDateData] = useState(
     moment(new Date()).format('YYYY-MM-DD')
@@ -106,9 +106,13 @@ const Modal = ({ closeModal, addTask }) => {
             <button type="submit" className="event-form__submit-btn">
               Create
             </button>
-
-            <button className="event-form__submit-btn">Delete</button>
           </form>
+          <button
+            className="event-form__submit-btn"
+            onClick={() => deleteTask(eventId)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

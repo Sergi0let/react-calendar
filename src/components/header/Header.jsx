@@ -9,7 +9,6 @@ const Header = ({
   clickNextWeek,
   clickPrevWeek,
   openModal,
-  onEventData,
 }) => {
   return (
     <header className="header">

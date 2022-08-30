@@ -32,6 +32,16 @@ export const formatMins = (mins) => {
   return mins < 10 ? `0${mins}` : mins;
 };
 
+export const getPresentMonth = (weekDates) => {
+  const [startWeek, , , , , endWeek] = weekDates;
+
+  return startWeek.getMonth() === endWeek.getMonth()
+    ? moment(startWeek).format('MMM YYYY')
+    : `${moment(startWeek).format('MMM')} - ${moment(endWeek).format(
+        'MMM YYYY'
+      )}`;
+};
+
 export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export const months = [
   'January',
@@ -47,12 +57,3 @@ export const months = [
   'November',
   'December',
 ];
-export const getPresentMonth = (weekDates) => {
-  const [startWeek, , , , , endWeek] = weekDates;
-
-  return startWeek.getMonth() === endWeek.getMonth()
-    ? moment(startWeek).format('MMM YYYY')
-    : `${moment(startWeek).format('MMM')} - ${moment(endWeek).format(
-        'MMM YYYY'
-      )}`;
-};
