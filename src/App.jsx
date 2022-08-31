@@ -3,7 +3,6 @@ import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
-import events from './gateway/events.js';
 
 const baseUrl = 'https://6308db4ef8a20183f76a2443.mockapi.io/events/events';
 
@@ -67,8 +66,6 @@ const App = () => {
     setEventsObj(updatedEvent);
     toggleModal(false);
   };
-
-  // useEffect(() => );
 
   return (
     <>
