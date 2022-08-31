@@ -41,7 +41,7 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
     e.preventDefault();
 
     const eventData = {
-      id: Math.floor(Math.random() * 1000),
+      // id: Math.floor(Math.random() * 1000),
       title: titleData,
       description: descriptionData,
       dateFrom: getDateTime(dateData, startTimeData),
@@ -103,12 +103,15 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
               value={descriptionData}
             ></textarea>
 
-            <button type="submit" className="event-form__submit-btn">
+            <button
+              type="submit"
+              className="event-form__submit-btn button-modal"
+            >
               Create
             </button>
           </form>
           <button
-            className="event-form__submit-btn"
+            className="create-event__delete-btn button-modal"
             onClick={() => deleteTask(eventId)}
           >
             Delete

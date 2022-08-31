@@ -1,13 +1,15 @@
+import moment from 'moment';
 import React from 'react';
 
 import Day from '../day/Day';
 
 import './week.scss';
+const isCurrentDay = (day) => moment().format('l') === moment(day).format('l');
 
-const Week = ({ weekDates, eventsObj, openModal, thisId }) => {
+const Week = ({ weekDates, eventsObj, openModal, thisId, setCurrentDay }) => {
   return (
     <div className="calendar__week">
-      {weekDates.map((dayStart) => {
+      {weekDates.map((dayStart, indexDay) => {
         const dayEnd = new Date(dayStart.getTime()).setHours(
           dayStart.getHours() + 24
         );
@@ -22,6 +24,8 @@ const Week = ({ weekDates, eventsObj, openModal, thisId }) => {
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
             thisId={thisId}
+            currentDay={isCurrentDay(weekDates[indexDay])}
+            setCurrentDay={setCurrentDay}
           />
         );
       })}

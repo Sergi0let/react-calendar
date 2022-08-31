@@ -37,7 +37,7 @@
   }
 
   &__time-slot {
-    height: 59px;
+    height: 60px;
     position: relative;
     border-bottom: 1px solid #eee;
   }
@@ -67,7 +67,17 @@
 
 .red-line {
   position: absolute;
+  position: relative;
   width: 100%;
   border-top: 2px solid red;
   z-index: 5;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+  }
 }

@@ -37,6 +37,9 @@
     height: 24px;
     background: transparent;
   }
+  &__delete-btn {
+    background-color: pink;
+  }
 }
 
 .event-form {
@@ -49,13 +52,6 @@
   }
 
   &__submit-btn {
-    margin: 8px;
-    margin-left: auto;
-    border: none;
-    color: #fff;
     background-color: cornflowerblue;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
   }
 }

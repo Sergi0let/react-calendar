@@ -6,11 +6,9 @@ const Event = ({ height, marginTop, title, time, openModal, id, thisId }) => {
     height,
     marginTop,
   };
-  // console.log('Event', id);
 
   const getEventId = (id) => {
     thisId(id);
-    // console.log(id);
   };
 
   return (
@@ -20,7 +18,6 @@ const Event = ({ height, marginTop, title, time, openModal, id, thisId }) => {
           openModal(true);
           getEventId(id);
         }}
-        // onClick={getEventId}
         style={eventStyle}
         className="event delete-event-btn "
       >
