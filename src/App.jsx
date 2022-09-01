@@ -3,7 +3,6 @@ import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
-// import events from './gateway/events.js';
 
 const baseUrl = 'https://6308db4ef8a20183f76a2443.mockapi.io/events/events';
 
@@ -13,7 +12,6 @@ const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
   const [isModal, setIsModal] = useState(false);
   const [eventsObj, setEventsObj] = useState([]);
-  console.log('evObj', eventsObj);
   const [eventId, setEventId] = useState(null);
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
@@ -65,26 +63,22 @@ const App = () => {
       if (response.ok) {
         fetchEventsList();
       } else {
-        throw new Error('Failed to create Event');
+        throw new Error("Internal Server Error. Can't display events");
       }
     });
   };
 
-  // const handleCreateEvent = (eventTask) => {
-  //   const updatedEvent = eventsObj.concat(eventTask);
-  //   setEventsObj(updatedEvent);
-  // };
-
-  // const handleDeleteEvent = (eventId) => {
-  //   const updatedEvent = eventsObj.filter((even) => even.id !== eventId);
-  //   setEventsObj(updatedEvent);
-  //   toggleModal(false);
-  // };
-
   const handleDeleteEvent = (eventId) => {
     fetch(`${baseUrl}/${eventId}`, {
       method: 'DELETE',
+    }).then((response) => {
+      if (response.ok) {
+        fetchEventsList();
+      } else {
+        throw new Error("Internal Server Error. Can't display events");
+      }
     });
+    setIsModal(false);
   };
 
   return (
@@ -119,3 +113,14 @@ const App = () => {
 };
 
 export default App;
+
+// const handleCreateEvent = (eventTask) => {
+//   const updatedEvent = eventsObj.concat(eventTask);
+//   setEventsObj(updatedEvent);
+// };
+
+// const handleDeleteEvent = (eventId) => {
+//   const updatedEvent = eventsObj.filter((even) => even.id !== eventId);
+//   setEventsObj(updatedEvent);
+//   toggleModal(false);
+// };

@@ -1,24 +1,76 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import { getDateTime } from '../../utils/dateUtils';
+import {
+  getDateTime,
+  getNumberTime,
+  validationDelete,
+} from '../../utils/dateUtils';
 
 import './modal.scss';
 
 const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
   const [titleData, setTitleData] = useState('');
+  const [titleDirty, setTitleDirty] = useState(false);
   const [dateData, setDateData] = useState(
     moment(new Date()).format('YYYY-MM-DD')
   );
   const [startTimeData, setStartData] = useState(
     moment(new Date()).format('HH:MM')
   );
+
   const [endTimeData, setEndTimeData] = useState(
     moment(new Date()).format('HH:MM')
   );
+
   const [descriptionData, setDescription] = useState('');
+  const [descriptioDirty, setDescriptioDirty] = useState(false);
+
+  const [titleError, setTitleError] = useState('Загаловок не може бути пустий');
+  const [descriptionError, setDescriptionError] = useState(
+    'Опис не може бути пустий'
+  );
+
+  const [formValid, setFormValid] = useState(false);
+  // const [deleteValid, setDeleteValid] = useState(false);
+
+  useEffect(() => {
+    if (
+      descriptionError ||
+      titleError ||
+      getNumberTime(endTimeData) - getNumberTime(startTimeData) > 360 ||
+      getNumberTime(endTimeData) - getNumberTime(startTimeData) < 15
+    ) {
+      setFormValid(false);
+    } else {
+      setFormValid(true);
+    }
+  }, [titleError, descriptionError, startTimeData, endTimeData]);
+
+  // useEffect(() => {
+  //   const result = validationDelete();
+  //   if (!result) {
+  //     setDeleteValid(false);
+  //   } else {
+  //     setDeleteValid(true);
+  //   }
+  // }, [deleteValid]);
+
+  const blurHandler = (e) => {
+    switch (e.target.name) {
+      case 'title':
+        setTitleDirty(true);
+        break;
+      case 'description':
+        setDescriptioDirty(true);
+        break;
+    }
+  };
 
   const handleChangeTitle = (e) => {
     setTitleData(e.target.value);
+    if (e.target.value) {
+      setTitleError();
+    }
   };
 
   const handleDate = (e) => {
@@ -35,6 +87,9 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
 
   const handleSetDescription = (e) => {
     setDescription(e.target.value);
+    if (e.target.value) {
+      setDescriptionError();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -46,7 +101,6 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
       dateFrom: getDateTime(dateData, startTimeData),
       dateTo: getDateTime(dateData, endTimeData),
     };
-    console.log(eventData);
 
     addTask(eventData);
     closeModal(false);
@@ -63,13 +117,17 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
             +
           </button>
           <form className="event-form" onSubmit={handleSubmit}>
+            {titleDirty && titleError && (
+              <div style={{ color: 'red' }}>{titleError}</div>
+            )}
             <input
               type="text"
               name="title"
-              placeholder="title"
+              placeholder="Заголовок"
               className="event-form__field"
               onChange={handleChangeTitle}
               value={titleData}
+              onBlur={(e) => blurHandler(e)}
             />
             <div className="event-form__time">
               <input
@@ -95,24 +153,33 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
                 value={endTimeData}
               />
             </div>
+            {descriptioDirty && descriptionError && (
+              <div style={{ color: 'red' }}>{descriptionError}</div>
+            )}
             <textarea
               name="description"
-              placeholder="description"
+              placeholder="Опис"
               className="event-form__field"
               onChange={handleSetDescription}
               value={descriptionData}
+              onBlur={(e) => blurHandler(e)}
             ></textarea>
 
             <button
               type="submit"
               className="event-form__submit-btn button-modal"
+              disabled={!formValid}
             >
-              Create
+              {!formValid ? 'Not Valid' : 'Create'}
             </button>
           </form>
           <button
             className="create-event__delete-btn button-modal"
-            onClick={() => deleteTask(eventId)}
+            // disabled={!deleteValid}
+            onClick={() => {
+              deleteTask(eventId);
+              validationDelete(new Date());
+            }}
           >
             Delete
           </button>

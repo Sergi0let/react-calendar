@@ -18,7 +18,11 @@ const Day = ({
     .map((val, index) => index);
 
   return (
-    <div className="calendar__day" data-day={dataDay}>
+    <div
+      onClick={() => openModal(true)}
+      className="calendar__day"
+      data-day={dataDay}
+    >
       {currentDay && <TimeLine setCurrentDay={setCurrentDay} />}
       {hours.map((hour) => {
         //getting all events from the day we will render

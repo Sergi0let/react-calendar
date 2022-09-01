@@ -30,6 +30,7 @@ const Hour = ({ id, dataHour, hourEvents, openModal, thisId }) => {
             openModal={openModal}
             id={id}
             thisId={thisId}
+            onClick={() => openModal(true)}
           />
         );
       })}
