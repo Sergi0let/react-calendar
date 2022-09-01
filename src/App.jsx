@@ -3,15 +3,16 @@ import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
+import events from './gateway/events.js';
 
-const baseUrl = 'https://6308db4ef8a20183f76a2443.mockapi.io/events/events';
+// const baseUrl = 'https://6308db4ef8a20183f76a2443.mockapi.io/events/events';
 
 import './common.scss';
 
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
   const [isModal, setIsModal] = useState(false);
-  const [eventsObj, setEventsObj] = useState([]);
+  const [eventsObj, setEventsObj] = useState(events);
   console.log('evObj', eventsObj);
   const [eventId, setEventId] = useState(null);
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
@@ -37,28 +38,37 @@ const App = () => {
     setEventId(valueId);
   };
 
+  // const fetchEventsList = () => {
+  //   fetch(baseUrl)
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //     })
+  //     .then((eventsList) => {
+  //       setEventsObj(eventsList);
+  //     });
+  // };
+
+  // const handleCreateEvent = (eventTask) => {
+  //   fetch(baseUrl, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(eventTask),
+  //   }).then((response) => {
+  //     if (response.ok) {
+  //       fetchEventsList();
+  //     } else {
+  //       throw new Error('Failed to create Event');
+  //     }
+  //   });
+  // };
+
   const handleCreateEvent = (eventTask) => {
-    fetch(baseUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(eventTask),
-    }).then((response) => {
-      if (response.ok) {
-        fetch(baseUrl)
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then((eventsList) => {
-            setEventsObj(eventsList);
-          });
-      } else {
-        throw new Error('Failed to create Event');
-      }
-    });
+    const updatedEvent = eventsObj.concat(eventTask);
+    setEventsObj(updatedEvent);
   };
 
   const handleDeleteEvent = (eventId) => {

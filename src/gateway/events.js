@@ -1,4 +1,26 @@
-const events = [];
+const events = [
+  {
+    id: 1,
+    title: 'Go to the gym',
+    description: 'some text here',
+    dateFrom: '2022-08-28T22:00:00.000Z',
+    dateTo: '2022-08-29T00:00:00.000Z',
+  },
+  {
+    id: 2,
+    title: 'Go to the school',
+    description: 'hello, 2 am',
+    dateFrom: new Date(2022, 7, 29, 3, 30),
+    dateTo: new Date(2022, 7, 29, 5, 30),
+  },
+  {
+    id: 3,
+    title: 'Lunch',
+    description: '',
+    dateFrom: new Date(2022, 7, 30, 4, 30),
+    dateTo: new Date(2022, 7, 30, 5, 30),
+  },
+];
 
 export default events;
 // {

@@ -6,7 +6,6 @@ import { formatMins } from '../../../src/utils/dateUtils.js';
 const Hour = ({ dataHour, hourEvents, openModal, thisId }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
-      {/* {new Day() && <div className="red-line"></div>} */}
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(
