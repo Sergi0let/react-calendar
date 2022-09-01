@@ -6,7 +6,7 @@ const Event = ({ height, marginTop, title, time, openModal, id, thisId }) => {
     height,
     marginTop,
   };
-  console.log(height);
+
   const getEventId = (id) => {
     thisId(id);
   };

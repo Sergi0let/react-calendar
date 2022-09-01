@@ -8,7 +8,7 @@ import {
 
 import './modal.scss';
 
-const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
+const Modal = ({ closeModal, addTask, deleteTask, eventId, eventsObj }) => {
   const [titleData, setTitleData] = useState('');
   const [titleDirty, setTitleDirty] = useState(false);
   const [dateData, setDateData] = useState(
@@ -178,7 +178,6 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId }) => {
             // disabled={!deleteValid}
             onClick={() => {
               deleteTask(eventId);
-              validationDelete(new Date());
             }}
           >
             Delete

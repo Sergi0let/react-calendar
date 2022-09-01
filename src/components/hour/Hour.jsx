@@ -6,7 +6,6 @@ import Event from '../event/Event';
 const Hour = ({ id, dataHour, hourEvents, openModal, thisId }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
-      {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${getTimeObj(dateFrom).getHours()}:${formatMins(
           getTimeObj(dateFrom).getMinutes()
