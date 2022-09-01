@@ -3,6 +3,7 @@ import Hour from '../hour/Hour';
 import TimeLine from './TimeLine';
 
 import './day.scss';
+import { getTimeObj } from '../../utils/dateUtils';
 
 const Day = ({
   dataDay,
@@ -22,7 +23,7 @@ const Day = ({
       {hours.map((hour) => {
         //getting all events from the day we will render
         const hourEvents = dayEvents.filter(
-          (event) => event.dateFrom.getHours() === hour
+          (event) => getTimeObj(event.dateFrom).getHours() === hour
         );
 
         return (

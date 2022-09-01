@@ -57,3 +57,7 @@ export const months = [
   'November',
   'December',
 ];
+
+export const getTimeObj = (strTime) => {
+  return new Date(strTime);
+};

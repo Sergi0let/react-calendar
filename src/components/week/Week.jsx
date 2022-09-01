@@ -1,5 +1,6 @@
 import moment from 'moment';
 import React from 'react';
+import { getTimeObj } from '../../utils/dateUtils';
 
 import Day from '../day/Day';
 
@@ -15,7 +16,9 @@ const Week = ({ weekDates, eventsObj, openModal, thisId, setCurrentDay }) => {
         );
         //getting all events from the day we will render
         const dayEvents = eventsObj.filter(
-          (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
+          (event) =>
+            getTimeObj(event.dateFrom) > dayStart &&
+            getTimeObj(event.dateTo) < dayEnd
         );
         return (
           <Day
