@@ -7,7 +7,14 @@ import Day from '../day/Day';
 import './week.scss';
 const isCurrentDay = (day) => moment().format('l') === moment(day).format('l');
 
-const Week = ({ weekDates, eventsObj, openModal, thisId, setCurrentDay }) => {
+const Week = ({
+  weekDates,
+  eventsObj,
+  openModal,
+  thisId,
+  setCurrentDay,
+  deleteTask,
+}) => {
   return (
     <div className="calendar__week">
       {weekDates.map((dayStart, indexDay) => {
@@ -29,6 +36,7 @@ const Week = ({ weekDates, eventsObj, openModal, thisId, setCurrentDay }) => {
             thisId={thisId}
             currentDay={isCurrentDay(weekDates[indexDay])}
             setCurrentDay={setCurrentDay}
+            deleteTask={deleteTask}
           />
         );
       })}

@@ -67,9 +67,9 @@ export const getNumberTime = (time) => {
   return Number(+hours * 60 + +minutes);
 };
 
-export const validationDelete = (time) => {
-  const currentTime = time.getHours() * 60 + new Date().getMinutes();
-  const dateMakeEven = console.log(currentTime);
-  // const passMin = new Date().getHours() * 60 + new Date().getMinutes();
-  // return passMin - (passMin - 15) > 15;
-};
+// export const validationDelete = (time) => {
+//   const currentTime = time.getHours() * 60 + new Date().getMinutes();
+//   const dateMakeEven = console.log(currentTime);
+//   // const passMin = new Date().getHours() * 60 + new Date().getMinutes();
+//   // return passMin - (passMin - 15) > 15;
+// };

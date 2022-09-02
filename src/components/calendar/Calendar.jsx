@@ -13,6 +13,7 @@ const Calendar = ({
   thisId,
   currentDay,
   setCurrentDay,
+  deleteTask,
 }) => {
   return (
     <section className="calendar">
@@ -27,6 +28,7 @@ const Calendar = ({
             thisId={thisId}
             currentDay={currentDay}
             setCurrentDay={setCurrentDay}
+            deleteTask={deleteTask}
           />
         </div>
       </div>

@@ -3,7 +3,7 @@ import { formatMins, getTimeObj } from '../../../src/utils/dateUtils.js';
 
 import Event from '../event/Event';
 
-const Hour = ({ id, dataHour, hourEvents, openModal, thisId }) => {
+const Hour = ({ id, dataHour, hourEvents, openModal, thisId, deleteTask }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
@@ -30,6 +30,7 @@ const Hour = ({ id, dataHour, hourEvents, openModal, thisId }) => {
             id={id}
             thisId={thisId}
             onClick={() => openModal(true)}
+            deleteTask={deleteTask}
           />
         );
       })}

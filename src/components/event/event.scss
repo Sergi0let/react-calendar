@@ -14,9 +14,30 @@
     white-space: nowrap;
     margin-bottom: 8px;
   }
+  &__delete {
+    position: relative;
+    display: block;
+    bottom: -20%;
+    right: -85px;
+    width: 160px;
+    height: 70px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 10px 5px 20px -5px rgba(0, 0, 0, 0.75);
+    font-weight: 700;
+  }
+  &__delete-button {
+    font-weight: 700;
+    border: none;
+    background: #fff;
+  }
 }
 
 .delete-event-btn {
   cursor: pointer;
   border: none;
+  text-transform: uppercase;
 }

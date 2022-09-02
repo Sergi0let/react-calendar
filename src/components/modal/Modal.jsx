@@ -100,6 +100,7 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId, eventsObj }) => {
       description: descriptionData,
       dateFrom: getDateTime(dateData, startTimeData),
       dateTo: getDateTime(dateData, endTimeData),
+      isDelete: true,
     };
 
     addTask(eventData);
@@ -173,7 +174,7 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId, eventsObj }) => {
               {!formValid ? 'Not Valid' : 'Create'}
             </button>
           </form>
-          <button
+          {/* <button
             className="create-event__delete-btn button-modal"
             // disabled={!deleteValid}
             onClick={() => {
@@ -181,7 +182,7 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId, eventsObj }) => {
             }}
           >
             Delete
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

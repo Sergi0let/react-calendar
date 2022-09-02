@@ -12,6 +12,7 @@ const Day = ({
   thisId,
   currentDay,
   setCurrentDay,
+  deleteTask,
 }) => {
   const hours = Array(24)
     .fill()
@@ -37,6 +38,7 @@ const Day = ({
             hourEvents={hourEvents}
             openModal={openModal}
             thisId={thisId}
+            deleteTask={deleteTask}
           />
         );
       })}
