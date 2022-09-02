@@ -1,6 +1,6 @@
 <h1>📅 React Calendar</h1>
 
-<a href="https://sergi0let.github.io/Price-cards-layout/">Site link</a>
+<a href="https://github.com/Sergi0let/react/tree/master/lesson6-conditional-rendering/task5">Calendar link</a>
 <br />
 
 <p>Three adaptive price card in row. Width layout 1440px</p>
