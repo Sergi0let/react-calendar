@@ -43,20 +43,6 @@ export const getPresentMonth = (weekDates) => {
 };
 
 export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-export const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
 
 export const getTimeObj = (strTime) => {
   return new Date(strTime);
@@ -66,10 +52,3 @@ export const getNumberTime = (time) => {
   const [hours, minutes] = time.split(':');
   return Number(+hours * 60 + +minutes);
 };
-
-// export const validationDelete = (time) => {
-//   const currentTime = time.getHours() * 60 + new Date().getMinutes();
-//   const dateMakeEven = console.log(currentTime);
-//   // const passMin = new Date().getHours() * 60 + new Date().getMinutes();
-//   // return passMin - (passMin - 15) > 15;
-// };

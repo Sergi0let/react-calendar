@@ -24,7 +24,7 @@ const TimeLine = ({ currentDay }) => {
   return <div className="red-line" style={{ top: minsPass }}></div>;
 };
 
-TimeLine.PropTypes = {
+TimeLine.propTypes = {
   currentDay: PropTypes.bool,
 };
 export default TimeLine;
