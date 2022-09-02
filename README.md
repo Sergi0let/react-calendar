@@ -1,6 +1,6 @@
 <h1>📅 React Calendar</h1>
 
-<a href="https://github.com/Sergi0let/react/tree/master/lesson6-conditional-rendering/task5](https://iridescent-crumble-4ba215.netlify.app/)">Calendar link</a>
+<a href="https://iridescent-crumble-4ba215.netlify.app/">Calendar link</a>
 <br />
 
 <p>Three adaptive price card in row. Width layout 1440px</p>
