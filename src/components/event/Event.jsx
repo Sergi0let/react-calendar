@@ -43,8 +43,11 @@ const Event = ({
       >
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
+
         {isDelete && (
           <div className="event__delete">
+            <i class="fas fa-trash event__delete-icon"></i>
+
             <button
               className="event__delete-button "
               onClick={(e) => {

@@ -46,12 +46,10 @@ const Day = ({
   );
 };
 Day.propTypes = {
-  dataDay: PropTypes.number,
   dayEvents: PropTypes.array.isRequired,
   openModal: PropTypes.func.isRequired,
   thisId: PropTypes.func.isRequired,
   currentDay: PropTypes.bool,
-
   deleteTask: PropTypes.func.isRequired,
 };
 

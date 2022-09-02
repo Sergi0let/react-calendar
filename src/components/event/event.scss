@@ -17,8 +17,8 @@
   &__delete {
     position: relative;
     display: block;
-    bottom: -20%;
-    right: -85px;
+    top: -5%;
+    right: -220px;
     width: 160px;
     height: 70px;
     background: rgb(255, 255, 255);
@@ -33,6 +33,12 @@
     font-weight: 700;
     border: none;
     background: #fff;
+    cursor: pointer;
+  }
+
+  &__delete-icon {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.75);
   }
 }
 

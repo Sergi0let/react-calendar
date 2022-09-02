@@ -7,7 +7,6 @@ import { days } from '../../utils/dateUtils.js';
 import './navigation.scss';
 
 const NavigationDay = ({ dayDate }) => {
-  console.log(dayDate);
   const presentDay = (dayDate) => {
     return dayDate.getDate() === new Date().getDate();
   };
