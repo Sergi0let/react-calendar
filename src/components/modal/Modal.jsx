@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import {
-  getDateTime,
-  getNumberTime,
-  validationDelete,
-} from '../../utils/dateUtils';
+import PropTypes from 'prop-types';
+
+import { getDateTime, getNumberTime } from '../../utils/dateUtils';
 
 import './modal.scss';
 
-const Modal = ({ closeModal, addTask, deleteTask, eventId, eventsObj }) => {
+const Modal = ({ closeModal, addTask }) => {
   const [titleData, setTitleData] = useState('');
   const [titleDirty, setTitleDirty] = useState(false);
   const [dateData, setDateData] = useState(
@@ -45,15 +43,6 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId, eventsObj }) => {
       setFormValid(true);
     }
   }, [titleError, descriptionError, startTimeData, endTimeData]);
-
-  // useEffect(() => {
-  //   const result = validationDelete();
-  //   if (!result) {
-  //     setDeleteValid(false);
-  //   } else {
-  //     setDeleteValid(true);
-  //   }
-  // }, [deleteValid]);
 
   const blurHandler = (e) => {
     switch (e.target.name) {
@@ -174,19 +163,15 @@ const Modal = ({ closeModal, addTask, deleteTask, eventId, eventsObj }) => {
               {!formValid ? 'Not Valid' : 'Create'}
             </button>
           </form>
-          {/* <button
-            className="create-event__delete-btn button-modal"
-            // disabled={!deleteValid}
-            onClick={() => {
-              deleteTask(eventId);
-            }}
-          >
-            Delete
-          </button> */}
         </div>
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  addTask: PropTypes.func.isRequired,
 };
 
 export default Modal;

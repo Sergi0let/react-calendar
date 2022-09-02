@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
@@ -6,15 +7,7 @@ import Sidebar from '../sidebar/Sidebar';
 
 import './calendar.scss';
 
-const Calendar = ({
-  weekDates,
-  openModal,
-  eventsObj,
-  thisId,
-  currentDay,
-  setCurrentDay,
-  deleteTask,
-}) => {
+const Calendar = ({ weekDates, openModal, eventsObj, thisId, deleteTask }) => {
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
@@ -26,8 +19,6 @@ const Calendar = ({
             eventsObj={eventsObj}
             openModal={openModal}
             thisId={thisId}
-            currentDay={currentDay}
-            setCurrentDay={setCurrentDay}
             deleteTask={deleteTask}
           />
         </div>
@@ -36,4 +27,11 @@ const Calendar = ({
   );
 };
 
+Calendar.propTypes = {
+  weekDates: PropTypes.array.isRequired,
+  openModal: PropTypes.func.isRequired,
+  eventsObj: PropTypes.array.isRequired,
+  thisId: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+};
 export default Calendar;

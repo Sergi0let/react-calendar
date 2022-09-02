@@ -12,9 +12,7 @@ const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
   const [isModal, setIsModal] = useState(false);
   const [eventsObj, setEventsObj] = useState([]);
-  console.log('eventsArray', eventsObj);
   const [eventId, setEventId] = useState(null);
-  console.log(eventId);
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
   const handleNextWeek = () => {
@@ -98,7 +96,6 @@ const App = () => {
         closeModal={toggleModal}
         eventsObj={eventsObj}
         thisId={handlerSetId}
-        setCurrentDay={handleSetCurrent}
         deleteTask={handleDeleteEvent}
       />
       {isModal && (
@@ -115,14 +112,3 @@ const App = () => {
 };
 
 export default App;
-
-// const handleCreateEvent = (eventTask) => {
-//   const updatedEvent = eventsObj.concat(eventTask);
-//   setEventsObj(updatedEvent);
-// };
-
-// const handleDeleteEvent = (eventId) => {
-//   const updatedEvent = eventsObj.filter((even) => even.id !== eventId);
-//   setEventsObj(updatedEvent);
-//   toggleModal(false);
-// };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Hour from '../hour/Hour';
 import TimeLine from './TimeLine';
+import PropTypes from 'prop-types';
 
 import './day.scss';
 import { getTimeObj } from '../../utils/dateUtils';
@@ -11,7 +12,6 @@ const Day = ({
   openModal,
   thisId,
   currentDay,
-  setCurrentDay,
   deleteTask,
 }) => {
   const hours = Array(24)
@@ -24,7 +24,7 @@ const Day = ({
       className="calendar__day"
       data-day={dataDay}
     >
-      {currentDay && <TimeLine setCurrentDay={setCurrentDay} />}
+      {currentDay && <TimeLine />}
       {hours.map((hour) => {
         //getting all events from the day we will render
         const hourEvents = dayEvents.filter(
@@ -44,6 +44,15 @@ const Day = ({
       })}
     </div>
   );
+};
+Day.propTypes = {
+  dataDay: PropTypes.number,
+  dayEvents: PropTypes.array.isRequired,
+  openModal: PropTypes.func.isRequired,
+  thisId: PropTypes.func.isRequired,
+  currentDay: PropTypes.bool,
+
+  deleteTask: PropTypes.func.isRequired,
 };
 
 export default Day;

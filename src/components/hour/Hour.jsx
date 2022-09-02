@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { formatMins, getTimeObj } from '../../../src/utils/dateUtils.js';
 
 import Event from '../event/Event';
 
-const Hour = ({ id, dataHour, hourEvents, openModal, thisId, deleteTask }) => {
+const Hour = ({ dataHour, hourEvents, openModal, thisId, deleteTask }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
@@ -18,7 +20,6 @@ const Hour = ({ id, dataHour, hourEvents, openModal, thisId, deleteTask }) => {
         return (
           <Event
             key={id}
-            //calculating event height = duration of event in minutes
             height={
               (getTimeObj(dateTo).getTime() - getTimeObj(dateFrom).getTime()) /
               (1000 * 60)
@@ -38,4 +39,11 @@ const Hour = ({ id, dataHour, hourEvents, openModal, thisId, deleteTask }) => {
   );
 };
 
+Hour.propTypes = {
+  dataHour: PropTypes.number,
+  hourEvents: PropTypes.array.isRequired,
+  openModal: PropTypes.func.isRequired,
+  thisId: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+};
 export default Hour;

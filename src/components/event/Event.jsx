@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import './event.scss';
 
 const Event = ({
@@ -11,6 +13,7 @@ const Event = ({
   thisId,
   deleteTask,
 }) => {
+  console.log(id);
   const [isDelete, setIsDelete] = useState(false);
   const eventStyle = {
     height,
@@ -45,7 +48,8 @@ const Event = ({
           <div className="event__delete">
             <button
               className="event__delete-button "
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 deleteTask(id);
                 getEventId(id);
               }}
@@ -57,6 +61,17 @@ const Event = ({
       </div>
     </>
   );
+};
+
+Event.propTypes = {
+  height: PropTypes.number,
+  marginTop: PropTypes.number,
+  title: PropTypes.string,
+  time: PropTypes.string,
+  openModal: PropTypes.func.isRequired,
+  id: PropTypes.string,
+  thisId: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
 export default Event;
