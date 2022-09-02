@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
-const getMinsPassed = () =>
-  new Date().getHours() * 60 + new Date().getMinutes();
+import PropTypes from 'prop-types';
 
 const TimeLine = ({ currentDay }) => {
+  const getMinsPassed = () =>
+    new Date().getHours() * 60 + new Date().getMinutes();
+
   const [minsPass, setMinsPass] = useState(getMinsPassed());
 
   useEffect(() => {
@@ -23,4 +24,7 @@ const TimeLine = ({ currentDay }) => {
   return <div className="red-line" style={{ top: minsPass }}></div>;
 };
 
+TimeLine.PropTypes = {
+  currentDay: PropTypes.bool,
+};
 export default TimeLine;

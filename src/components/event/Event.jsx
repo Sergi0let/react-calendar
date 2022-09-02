@@ -13,7 +13,6 @@ const Event = ({
   thisId,
   deleteTask,
 }) => {
-  console.log(id);
   const [isDelete, setIsDelete] = useState(false);
   const eventStyle = {
     height,

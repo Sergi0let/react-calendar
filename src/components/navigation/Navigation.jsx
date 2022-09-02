@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import NavigationDay from './NavigationDay.jsx';
 
 const Navigation = ({ weekDates }) => {
@@ -9,6 +11,10 @@ const Navigation = ({ weekDates }) => {
       ))}
     </header>
   );
+};
+
+Navigation.propTypes = {
+  weekDates: PropTypes.array.isRequired,
 };
 
 export default Navigation;

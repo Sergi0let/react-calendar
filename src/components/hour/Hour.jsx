@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { formatMins, getTimeObj } from '../../../src/utils/dateUtils.js';
-
 import Event from '../event/Event';
 
 const Hour = ({ dataHour, hourEvents, openModal, thisId, deleteTask }) => {
