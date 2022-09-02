@@ -12,6 +12,7 @@
   <li>Sass <b>(SCSS)</b></li>
   <li>Flexbox</li>
   <li>BEM methodology</li>
+  <li>JS <i>ES6</i></li>
   <li>REACT</li>
 </ul>
 <br />
